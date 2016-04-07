@@ -24,6 +24,7 @@ module Yesod.Auth.Account.Message(
     AccountMsg(..)
   , defaultAccountMsg
   , englishAccountMsg
+  , russianAccountMsg
 ) where
 
 import qualified Data.Text as T
@@ -63,3 +64,20 @@ englishAccountMsg MsgResetPwdEmailSent = "A password reset email has been sent t
 englishAccountMsg MsgEmailVerified = "Your email has been verified."
 englishAccountMsg MsgEmailUnverified = "Your email has not yet been verified."
 englishAccountMsg MsgCurrentPassword = "Please fill in your current password"
+
+russianAccountMsg :: AccountMsg -> T.Text
+russianAccountMsg MsgUsername = "Имя пользователя"
+russianAccountMsg MsgLoginName = "Имя или Эл.Почта"
+russianAccountMsg MsgForgotPassword = "Забыли пароль?"
+russianAccountMsg MsgInvalidUsername = "Неверное имя пользователя."
+russianAccountMsg MsgInvalidPassword = "Вы должны ввести правильный пароль."
+russianAccountMsg MsgInvalidEmail' = "Неправильный адрес эл.почты"
+russianAccountMsg (MsgUsernameExists u) =
+    T.concat ["Имя пользователя ", u, " уже занято. Пожалуйста, используйте другое имя."]
+russianAccountMsg (MsgEmailExists u) =
+    T.concat ["Электронный почтовый адрес ", u, " уже сущесвует.  Хотите сменить пароль?."]
+russianAccountMsg MsgResendVerifyEmail = "Выслать заново письмо с подтверждением"
+russianAccountMsg MsgResetPwdEmailSent = "Письмо для сброса пароля было выслано на ваш электронный адрес."
+russianAccountMsg MsgEmailVerified = "Ваша эл.почта проверена."
+russianAccountMsg MsgEmailUnverified = "Ваша эл.почта ещё не прошла проверку."
+russianAccountMsg MsgCurrentPassword = "Пожалуйста введите Ваш текущий пароль"
